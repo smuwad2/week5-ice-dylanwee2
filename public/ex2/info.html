@@ -31,9 +31,9 @@
 
                 try {
                     const response = await axios.get('/data', {
-                        params: {
-                            type : select_option.value,
-                            limit: limit_num.value
+                        "params": {
+                            "type" : select_option.value,
+                            "limit": limit_num.value
                         }
                     });
                     const data = response.data;
