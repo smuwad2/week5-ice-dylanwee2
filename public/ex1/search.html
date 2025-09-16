@@ -24,19 +24,21 @@
             const name_input = document.getElementById('nameInput');
             const suggestions = document.getElementById('suggestions');
 
-            name_input.addEventListener('keyup', async function showHint() {
-                try {
+            name_input.addEventListener('keyup', async function showHint() {                    
                     const response = await axios.get('/suggest',{
                         params:{
                             query: name_input.value
                         }
-                    });
-                    const data = response.data;
-                    suggestions.innerText = data;
+                    })
+                    .then(response => {
+                        const data = response.data;
+                        suggestions.innerText = data;
+                    })
+                    .catch(error => {
+                        console.log("Error" + error);
+                    })    
 
-                } catch (error) {
-                    console.log("Error" + error);
-                }
+                
             });
         </script>
 
