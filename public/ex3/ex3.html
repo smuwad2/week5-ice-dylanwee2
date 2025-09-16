@@ -73,7 +73,9 @@
             const selected_category = document.getElementById('selectCategory');
 
             axios.get('/items', {
-                selCategory: selected_category.value
+               params: {
+                    category: selected_category.value
+                }
             })
             .then(response => {
                 showItems(response);
@@ -93,7 +95,6 @@
             display.innerText = '';
 
             for(item of itemList){
-                console.log(item);
                 const name = item.name;
                 const price = item.price;
 
